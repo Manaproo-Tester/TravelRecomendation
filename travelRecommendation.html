@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('backgroundwalp.jpg'); /* Replace with your image path */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-attachment: fixed; /* Keeps the image fixed while scrolling */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #2a2a2a; /* Dark background */
+            color: white;
+        }
+
+        /* Logo section */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .navbar .logo span {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Navigation links */
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .nav-links li {
+            margin: 0 15px;
+        }
+
+        .navbar .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .navbar .nav-links li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search bar section */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 5px;
+            border-radius: 20px;
+        }
+
+        .search-container input[type="text"] {
+            border: none;
+            outline: none;
+            padding: 5px 5px;
+            flex: 1;
+            border-radius: 20px;
+        }
+
+        .search-container input::placeholder {
+            font-style: italic;
+            color: #666;
+        }
+
+        .search-container button {
+            border: none;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .search-container .search-btn {
+            background-color: #008080; /* Teal */
+            color: white;
+        }
+
+        .search-container .clear-btn {
+            background-color: #cccccc; /* Light gray */
+            color: black;
+        }
+
+        .search-container .search-btn:hover,
+        .search-container .clear-btn:hover {
+            opacity: 0.9;
+        }
+        .hero {
+            position: relative;
+            height: 100vh; /* Full viewport height */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Overlay effect */
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0); /* Dark overlay for better text contrast */
+        }
+
+        /* Content container */
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            color: white;
+        }
+
+        /* Main heading */
+        .hero-content h1 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* Subtext */
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        /* Button styling */
+        .hero-content .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #008080; /* Teal color */
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .team {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 20px;
+        }
+        .team-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+            transition: transform 0.3s;
+        }
+        .team-card:hover {
+            transform: scale(1.05);
+        }
+        .team-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .team-card h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2rem;
+            color: beige;
+        }
+        .team-card p {
+            font-size: 1rem;
+            margin: 5px 0 10px;
+            color: antiquewhite;
+        }
+        .team-card button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .team-card button:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            color: azure;
+
+        }
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color:black;
+        }
+        .content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: azure;
+        }
+        .contact-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .contact-container h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .contact-container label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .contact-container input,
+        .contact-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .contact-container textarea {
+            resize: none;
+            height: 100px;
+        }
+        .contact-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-container button:hover {
+            background-color: #0056b3;
+        }
+
+   </style>
+</head>
+<body>
+<!-- Navigation bar -->
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+        <img src="plane.jpeg" alt="Logo"></img>
+        </div>
+        
+        <!-- Sections-->
+        <ul class="nav-links">    
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about_us">About us</a></li>
+            <li><a href="#contact_us">Contact us</a> </li>
+        </ul>
+
+        <!-- Search bar -->
+        <div class="search-container">
+            <input type="text" placeholder="Enter a destination or keyword"></input>
+            <button class="search-btn">Search</button>
+            <button class="clear-btn" id="clearButton">Clear</button>
+    </nav>
+    
+    <section id="home">
+        <div class="hero">    
+            <div class="hero-content">
+                <h1>EXPLORE<br>ABSORVE</h1>
+                <p>We are a team and we want you to travel the world and be happy everyday.</p>
+            <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>    
+    
+    <section id="about_us">
+        <div class="content">
+            <h1>ABOUT US</h1>
+            <p>Welcome to Our Company! We are a team of passionate individuals dedicated to providing excellent services/products to our customers. Our mission is to provide the best experience for people traveling to different destinations around the world.</p>
+            <p>Our values include integrity, innovation, customer satisfaction, and teamwork. We believe in putting our customers first and working together to achieve our goals.</p>
+            <p>Feel free to explore our website to learn more about what we offer!</p>
+        </div>
+        <div class="team">
+            <div class="team-card">
+                <h3>John Doe</h3>
+                <p>John is responsible for...</p>
+                <button>CEO</button>
+            </div>
+            <div class="team-card">
+                <h3>Celina Thomas</h3>
+                <p>Celina is responsible for...</p>
+                <button>Team Lead</button>
+            </div>
+            <div class="team-card">
+                <h3>Mike Tysen</h3>
+                <p>Mike is responsible for...</p>
+                <button>Delivery Head</button>
+            </div>
+    
+    </section>
+    
+    <section id="contact_us">
+    <h2>Contact us</h2>
+    <form action="#" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+
+        <button type="submit">Submit</button>
+    </section>
+</body>
+</html>
